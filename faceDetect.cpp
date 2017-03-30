@@ -14,12 +14,20 @@ int main(int argc, char** argv )
     Mat image;
     image = imread( argv[1], 1 );
 
+    Mat output;
+
+
+
     if ( !image.data )
     {
         printf("No image data \n");
         return -1;
     }
+    applyColorMap(image, output, COLORMAP_BONE);
+
     namedWindow("Display Image", WINDOW_AUTOSIZE );
+    namedWindow("Mapped Pic", WINDOW_AUTOSIZE);
+    imshow("Mapped Pic", output);
     imshow("Display Image", image);
 
     waitKey(0);
